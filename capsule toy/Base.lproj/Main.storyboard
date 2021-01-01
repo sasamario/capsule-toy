@@ -24,6 +24,9 @@
                                 <rect key="frame" x="82" y="580" width="91" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="IMG_0454_w_trans"/>
+                                <connections>
+                                    <action selector="capsuleAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="imD-ZE-nqm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
