@@ -7,11 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CAAnimationDelegate {
 
+    @IBOutlet weak var capsuleButton: UIButton!
+    
+    @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        image.alpha = 0
         
     }
     
@@ -24,10 +29,13 @@ class ViewController: UIViewController {
     
     //回転アニメーションメソッド
     func rotate(sender: UIButton) {
+        
         //回転中ボタンを押せないようにする
         sender.isEnabled = false
         
         let rotationAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+        
+        rotationAnimation.delegate = self
         
         //toValueで、アニメーション終了時の値（絶対的な値）を指定。ここで終了時の角度を指定する。
         //角度をラジアンに変換する式　θ = θo × π/180 [rad]　 θoに自分の指定したい角度を指定すれば良い。
@@ -42,9 +50,33 @@ class ViewController: UIViewController {
         //アニメーションの追加？
         sender.layer.add(rotationAnimation, forKey: "rotationAnimation")
         
-        
-        sender.isEnabled = true
     }
+    
+    //アニメーション終了時に実行されるメソッド
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            //クロージャ内ではプロパティやメソッドを使用する際にはselfをつける必要がある
+            
+            //カプセルの透過率を1にして表示させる
+            self.image.alpha = 1.0
+            
+        }, completion: { finished in
+            //アニメーション終了時の処理
+            
+            //ボタンを押せるようにする
+            self.capsuleButton.isEnabled = true
+            
+            //カプセルを非表示にする
+            self.image.alpha = 0
+            
+            //画面遷移
+            self.performSegue(withIdentifier: "next", sender: nil)
+        })
+        
+    }
+    
+    
     
 }
 
