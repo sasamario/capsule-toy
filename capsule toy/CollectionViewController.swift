@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     //コレクションの配列
     var items: [String] = ["なし", "なし", "なし", "なし", "なし"]
@@ -53,18 +53,24 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
+        let itemImage = cell.contentView.viewWithTag(1) as! UIImageView
+        
         //Tag番号を指定して、ラベルのインスタンスを生成
-        let itemLabel = cell.contentView.viewWithTag(1) as! UILabel
+        let itemLabel = cell.contentView.viewWithTag(2) as! UILabel
         
         if UserDefaults.standard.object(forKey: "\(indexPath.row)") != nil {
-            //デバイス内にアイテムデータがある場合、そのデータをセルのラベルに反映させる
-            itemLabel.text = "あり"
+            //imageViewに画像を反映させる
+            itemImage.image = UIImage(named: "makimono_item")
+            
+            itemLabel.text = "\(indexPath.row + 1)"
             
         } else {
-            //デバイス内にアイテムデータがない場合、items配列なしを格納（この処理はなくても良いが一応）
-            itemLabel.text = "なし"
+            //imageViewに画像を反映させる
+            itemImage.image = UIImage(named: "mark_question")
+            
+            itemLabel.text = "\(indexPath.row + 1)"
         }
-        print(itemLabel.text!)
+       
         return cell
     }
     
@@ -72,6 +78,15 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
+    }
+    
+    //セルのサイズを指定する処理
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 横方向のスペース調整
+            let horizontalSpace:CGFloat = 5
+            let cellSize:CGFloat = self.view.bounds.width/3 - horizontalSpace*2
+            // 正方形で返すためにwidth,heightを同じにする
+            return CGSize(width: cellSize, height: cellSize)
     }
 
     /*
