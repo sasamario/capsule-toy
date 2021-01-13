@@ -9,31 +9,11 @@ import UIKit
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    //コレクションの配列
-    var items: [String] = ["なし", "なし", "なし", "なし", "なし"]
+    var number = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        //デバイスに保存されているコレクションを表示させる
-//        for i in 0..<5 {
-//            if UserDefaults.standard.object(forKey: "\(i)") != nil {
-//                //デバイス内にアイテムデータがある場合、items配列に格納する
-//                items[i] = UserDefaults.standard.object(forKey: "\(i)") as! String
-//
-//            } else {
-//                //デバイス内にアイテムデータがない場合、items配列なしを格納（この処理はなくても良いが一応）
-//                items[i] = "なし"
-//            }
-//
-//            //デバック
-//            if items[i] != "なし" {
-//                print(items[i])
-//            }
-//        }
-//        //デバック
-//        print("------")
-//
     }
     
     //戻る処理
@@ -44,11 +24,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     //セクション内のセルの数（つまり、表示させたい要素の数）
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //セルの数＝アイテムの数のためアイテム数を返す
-        return items.count
+        //セルの数を返す
+        return 12
     }
     
-    
+    //セルに表示する内容
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
@@ -87,6 +67,24 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             let cellSize:CGFloat = self.view.bounds.width/3 - horizontalSpace*2
             // 正方形で返すためにwidth,heightを同じにする
             return CGSize(width: cellSize, height: cellSize)
+    }
+    
+    //セル選択時の処理
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        number = indexPath.row
+        
+        performSegue(withIdentifier: "itemView", sender: nil)
+    }
+    
+    //segueが動作する際に処理されるメソッド
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //遷移先のCollectionItemViewControllerを取得
+        let collectionItemVC = segue.destination as? CollectionItemViewController
+        
+        //遷移先（CollectionItemViewController）の変数に値を渡す
+        collectionItemVC?.itemNumber = number
     }
 
     /*
