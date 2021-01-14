@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A20270725A345FF00A0E411 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20270625A345FF00A0E411 /* CollectionViewController.swift */; };
+		9A70D85625ADCE450004C045 /* CollectionItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A70D85525ADCE450004C045 /* CollectionItemViewController.swift */; };
 		9A8B24AB25A3364000E206C8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B24AA25A3364000E206C8 /* FirstViewController.swift */; };
 		9AE02F1B259DD7F600323D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE02F1A259DD7F600323D95 /* AppDelegate.swift */; };
 		9AE02F1D259DD7F600323D95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE02F1C259DD7F600323D95 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		9A20270625A345FF00A0E411 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		9A70D85525ADCE450004C045 /* CollectionItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemViewController.swift; sourceTree = "<group>"; };
 		9A8B24AA25A3364000E206C8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		9AE02F17259DD7F600323D95 /* capsule toy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "capsule toy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE02F1A259DD7F600323D95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				9AE02F25259DD7FA00323D95 /* LaunchScreen.storyboard */,
 				9AE02F28259DD7FA00323D95 /* Info.plist */,
 				9A20270625A345FF00A0E411 /* CollectionViewController.swift */,
+				9A70D85525ADCE450004C045 /* CollectionItemViewController.swift */,
 			);
 			path = "capsule toy";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				9AE02F1F259DD7F600323D95 /* ViewController.swift in Sources */,
 				9AE02F3125A1879100323D95 /* NextViewController.swift in Sources */,
 				9AE02F1B259DD7F600323D95 /* AppDelegate.swift in Sources */,
+				9A70D85625ADCE450004C045 /* CollectionItemViewController.swift in Sources */,
 				9AE02F1D259DD7F600323D95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
