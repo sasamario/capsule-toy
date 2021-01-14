@@ -13,8 +13,16 @@ class NextViewController: UIViewController {
         "今日も1日お疲れ様です！早く寝ましょう。",
         "ナイスファイト！最高！",
         "明日はゆっくり休みましょう",
-        "あいうえおおおおおおおおお",
-        "ナイス！"
+        "おつかれい！",
+        "ナイス！",
+        "良くできました",
+        "良くがんばりました",
+        "明日も頑張りましょう",
+        "自分にご褒美をあげましょう",
+        "土日はゆっくりしよう",
+        "お風呂に浸かろう",
+        "お酒でも飲もう"
+        
     ]
     
     @IBOutlet weak var message: UILabel!
@@ -24,7 +32,7 @@ class NextViewController: UIViewController {
         super.viewDidLoad()
 
         //指定範囲内でランダムな整数を生成
-        let randomInt = Int.random(in: 0..<5)
+        let randomInt = Int.random(in: 0..<12)
         
         message.text = messageArray[randomInt]
         
